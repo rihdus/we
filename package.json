@@ -1,0 +1,41 @@
+{
+	"name": "we",
+	"version": "0.0.0",
+	"license": "MIT",
+	"bin": "dist/cli.js",
+	"engines": {
+		"node": ">=10"
+	},
+	"scripts": {
+		"bootstrap": "pnpm install",
+		"build": "tsc",
+		"start": "npm run build && dist/cli.js",
+		"test": "jest"
+	},
+	"files": [
+		"dist/cli.js"
+	],
+	"dependencies": {
+		"ink": "^3.2.0",
+		"meow": "^9.0.0",
+		"react": "^17.0.2"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.16.7",
+		"@babel/preset-env": "^7.16.7",
+		"@babel/preset-react": "^7.16.7",
+		"@babel/preset-typescript": "^7.16.7",
+		"@sindresorhus/tsconfig": "^2.0.0",
+		"@types/jest": "^27.4.0",
+		"@types/react": "^17.0.38",
+		"babel-jest": "^27.4.5",
+		"chalk": "^4.1.2",
+		"eslint": "^8.6.0",
+		"eslint-config-xo-react": "^0.25.0",
+		"eslint-plugin-react": "^7.28.0",
+		"eslint-plugin-react-hooks": "^4.3.0",
+		"ink-testing-library": "^2.1.0",
+		"jest": "^27.4.5",
+		"typescript": "^4.5.4"
+	}
+}
