@@ -5,6 +5,7 @@ import { render } from 'ink';
 const commander = require('commander');
 import CreateCommand from './commands/create';
 import ConfigureCommand from './commands/configure';
+import {Toolchain} from "./commands/configure/toolchain";
 
 const { Command, Option } = commander;
 
@@ -36,7 +37,7 @@ program
 		])
 	)
 	.showHelpAfterError(true)
-	.action((configType: string /*, options: any*/) => {
+	.action((configType: Toolchain /*, options: any*/) => {
 		render(<ConfigureCommand configType={configType} />);
 		// console.log(configurationType, options)
 	});

@@ -3,6 +3,7 @@ import { Text } from 'ink';
 import Spinner from 'ink-spinner';
 
 export type ActivityType = 'idle' | 'running' | 'done' | 'error';
+export type TaskFactory = () => () => Promise<any>;
 
 type ActivityMap<T> = { [statusType in ActivityType]: T };
 

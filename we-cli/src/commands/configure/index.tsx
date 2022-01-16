@@ -1,21 +1,20 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Text } from 'ink';
-import { ActivityType, UI } from '../../core';
+import { ActivityType, TaskFactory, UI } from '../../core';
 import * as prettierCommand from './prettier';
+import { Toolchain } from './toolchain';
 
-const App: FC<{ configType?: string }> = ({ configType = '' }) => {
+const allCommands: { [toolchain in Toolchain]: TaskFactory } = {
+	prettier: prettierCommand.command,
+};
+
+const App: FC<{ configType: Toolchain }> = ({ configType }) => {
 	const [status, setStatus] = useState<ActivityType>('idle');
-	// @ts-ignore
 	const [data, setData] = useState<string | null>('');
 
 	useEffect(() => {
-		let activeTask: PromiseFn = () => Promise.resolve();
+		const activeTask = allCommands[configType]();
 		setStatus('running');
-		switch (configType) {
-			case 'prettier':
-				activeTask = prettierCommand.command();
-				break;
-		}
 		activeTask()
 			.then(() => {
 				setStatus('done');
@@ -39,5 +38,3 @@ const App: FC<{ configType?: string }> = ({ configType = '' }) => {
 };
 
 export default App;
-
-type PromiseFn = () => Promise<any>;
