@@ -1,29 +1,37 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Text } from 'ink';
-import { spawn } from 'child_process';
+import { ActivityType, UI } from '../../core';
+import * as prettierCommand from './prettier';
 
 const App: FC<{ configType?: string }> = ({ configType = '' }) => {
-	const [status, setStatus] = useState('Configuring');
+	const [status, setStatus] = useState<ActivityType>('idle');
 	// @ts-ignore
-	const [data, setData] = useState('');
+	const [data, setData] = useState<string | null>('');
 
 	useEffect(() => {
-		const ps = spawn('pnpm', ['mrm', 'prettier']);
-		setStatus('Running');
-		ps.stdout.on('data', (data) => {
-			setData(`${data}`);
-		});
-		ps.on('close', () => {
-			setStatus('Done');
-			setData('')
-		});
+		let activeTask: PromiseFn = () => Promise.resolve();
+		setStatus('running');
+		switch (configType) {
+			case 'prettier':
+				activeTask = prettierCommand.command();
+				break;
+		}
+		activeTask()
+			.then(() => {
+				setStatus('done');
+				setData('');
+			})
+			.catch(() => {
+				setStatus('error');
+			})
+			.finally(() => setData(null));
 	}, []);
 
 	return (
 		<>
 			<Text>
-				<Text color="green">{configType}</Text>
-				<Text> {status}</Text>
+				<UI.LoadingSymbol status={status} />
+				<Text color="green"> {configType}</Text>
 			</Text>
 			{<Text>{data}</Text>}
 		</>
@@ -31,3 +39,5 @@ const App: FC<{ configType?: string }> = ({ configType = '' }) => {
 };
 
 export default App;
+
+type PromiseFn = () => Promise<any>;
