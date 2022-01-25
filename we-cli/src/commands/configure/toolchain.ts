@@ -1,1 +1,1 @@
-export type Toolchain = 'prettier';
+export type Toolchain = 'prettier' | 'gitignore';

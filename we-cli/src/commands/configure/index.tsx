@@ -2,11 +2,16 @@ import React, { FC, useEffect, useState } from 'react';
 import { Text } from 'ink';
 import { ActivityType, TaskFactory, UI } from '../../core';
 import * as prettierCommand from './prettier';
+import * as gitignoreCommand from './gitignore';
 import { Toolchain } from './toolchain';
 
 const allCommands: { [toolchain in Toolchain]: TaskFactory } = {
 	prettier: prettierCommand.command,
+	gitignore: gitignoreCommand.command
 };
+
+export const AVAILABLE_TOOLCHAINS = Object.keys(allCommands)
+
 
 const App: FC<{ configType: Toolchain }> = ({ configType }) => {
 	const [status, setStatus] = useState<ActivityType>('idle');

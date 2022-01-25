@@ -20,7 +20,11 @@ specifiers:
   ink-testing-library: ^2.1.0
   jest: ^27.4.5
   mrm: ^3.0.10
+  mrm-task-editorconfig: ^3.0.8
+  mrm-task-gitignore: ^3.1.7
+  mrm-task-license: ^4.0.8
   mrm-task-prettier: ^4.0.8
+  mrm-task-readme: ^3.0.8
   prettier: '>=2'
   react: ^17.0.2
   typescript: ^4.5.4
@@ -30,7 +34,11 @@ dependencies:
   ink: 3.2.0_b08e3c15324cbe90a6ff8fcd416c932c
   ink-spinner: 4.0.3_ink@3.2.0+react@17.0.2
   mrm: 3.0.10
+  mrm-task-editorconfig: 3.0.8
+  mrm-task-gitignore: 3.1.7
+  mrm-task-license: 4.0.8
   mrm-task-prettier: 4.0.8
+  mrm-task-readme: 3.0.8
   react: 17.0.2
 
 devDependencies:
@@ -1846,6 +1854,11 @@ packages:
   /asynckit/0.4.0:
     resolution: {integrity: sha1-x57Zf380y48robyXkLzDZkdLS3k=}
     dev: true
+
+  /author-regex/1.0.0:
+    resolution: {integrity: sha1-0IiFvmubv5Q5/gh8dihyRfCoFFA=}
+    engines: {node: '>=0.8'}
+    dev: false
 
   /auto-bind/4.0.0:
     resolution: {integrity: sha512-Hdw8qdNiqdJ8LqT0iK0sVzkFbzg6fhnQqqfWhBDxcHZvU75+B+ayzTy8x+k5Ix0Y92XOhOUlx74ps+bA6BeYMQ==}
@@ -4416,6 +4429,30 @@ packages:
       yaml: 2.0.0-10
     dev: false
 
+  /mrm-task-editorconfig/3.0.8:
+    resolution: {integrity: sha512-E+W0dOAN4XmyXjmUJ37TtbsVPcY5lHuOz5X4y+i2SzCG9q2/jGJhJ42nIr3Wf0tjaCSTYhCCv65bUB/hJj7Yow==}
+    engines: {node: '>=10.13'}
+    dependencies:
+      mrm-core: 6.1.7
+    dev: false
+
+  /mrm-task-gitignore/3.1.7:
+    resolution: {integrity: sha512-vlVpEVdjNwanrOsIxhuU9CgMcLWLWeAEwGQRUtzcy5eB5BcK34IHcUJknekxKJsHIJoVq4u5/Ty+/TzL3yi4eg==}
+    engines: {node: '>=10.13'}
+    dependencies:
+      mrm-core: 6.1.7
+    dev: false
+
+  /mrm-task-license/4.0.8:
+    resolution: {integrity: sha512-424Y4s316/JVTDPNsoK6QfjErbLBFFsS+3TQqPYuqGR/kuwg4SiejOxSq65VyEW0UxWNytJXHsxvCHNhYw6BDg==}
+    engines: {node: '>=10.13'}
+    dependencies:
+      mrm-core: 6.1.7
+      parse-author: 2.0.0
+      smpltmpl: 1.0.2
+      user-meta: 1.0.0
+    dev: false
+
   /mrm-task-prettier/4.0.8:
     resolution: {integrity: sha512-BojcAh8TZQwyKn+Hx3yE8atagewbEUAnqDVi9sW3rj4/Mfz2BAr9CyodpN1EsdXOgkNd5+BbcwMcLgfoVFhUjQ==}
     engines: {node: '>=10.13'}
@@ -4423,6 +4460,18 @@ packages:
       editorconfig-to-prettier: 0.1.1
       lodash: 4.17.21
       mrm-core: 6.1.7
+    dev: false
+
+  /mrm-task-readme/3.0.8:
+    resolution: {integrity: sha512-XGGKiddFBk8/+NGLva/g9WpRPVNoHOqqiBSP3woPhC5+N6kFoHSKGoHEjMna9ZEUgRdFITtaZfdE4ckbsAjS4g==}
+    engines: {node: '>=10.13'}
+    dependencies:
+      git-username: 1.0.0
+      mrm-core: 6.1.7
+      package-repo-url: 1.0.4
+      parse-author: 2.0.0
+      smpltmpl: 1.0.2
+      user-meta: 1.0.0
     dev: false
 
   /mrm/3.0.10:
@@ -4668,12 +4717,26 @@ packages:
       semver: 6.3.0
     dev: false
 
+  /package-repo-url/1.0.4:
+    resolution: {integrity: sha512-k0s6Lav5Cc7UpJNH6hvjmyM06a2EY0Ro5eofp+tVWV9Kmszw9uEn3XIbvSkDIa6vUszpXmyyjpATmgb7fy97tg==}
+    engines: {node: '>=10'}
+    dependencies:
+      git-username: 1.0.0
+    dev: false
+
   /parent-module/1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
     engines: {node: '>=6'}
     dependencies:
       callsites: 3.1.0
     dev: true
+
+  /parse-author/2.0.0:
+    resolution: {integrity: sha1-00YL8d3Q367tQtp1QkLmX7aEqB8=}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      author-regex: 1.0.0
+    dev: false
 
   /parse-git-config/1.1.1:
     resolution: {integrity: sha1-06mYQxcTL1c5hxK7pDjhKVkN34w=}

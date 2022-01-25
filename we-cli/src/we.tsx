@@ -4,7 +4,7 @@ import { render } from 'ink';
 
 const commander = require('commander');
 import CreateCommand from './commands/create';
-import ConfigureCommand from './commands/configure';
+import ConfigureCommand, { AVAILABLE_TOOLCHAINS } from "./commands/configure";
 import { Toolchain } from './commands/configure/toolchain';
 
 const { Command, Option } = commander;
@@ -16,10 +16,7 @@ program
 	.description('Create project')
 	.argument('<project>', 'Project name')
 	.addOption(
-		new Option('-t --toolchain <toolchain>', 'Toolchain name').choices([
-			'Gatsby',
-			'NextJs',
-		])
+		new Option('-t --toolchain <toolchain>', 'Toolchain name').choices(AVAILABLE_TOOLCHAINS)
 	)
 	.showHelpAfterError(true)
 	.action((projectName: string, options: any) => {
@@ -32,8 +29,7 @@ program
 	.addArgument(
 		new commander.Argument('<configType>', 'Configuration Type').choices([
 			'prettier',
-			'eslint',
-			'editorconfig',
+			'gitignore',
 		])
 	)
 	.showHelpAfterError(true)
