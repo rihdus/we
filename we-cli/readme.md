@@ -23,4 +23,3 @@ $ we --help
     $ we --name=Jane
     Hello, Jane
 ```
-..
